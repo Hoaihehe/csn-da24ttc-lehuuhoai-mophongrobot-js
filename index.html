@@ -3,13 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Mô phỏng Robot Kho Hàng</title>
+    <!-- Tắt lỗi favicon.ico trên Console -->
+    <link rel="icon" href="data:,">
+    <!-- Liên kết file CSS nằm trong thư mục src -->
     <link rel="stylesheet" href="src/style.css">
 </head>
 <body>
+    <div class="warehouse-wrapper">
+        <h1>MÔ PHỎNG HOẠT ĐỘNG CỦA ROBOT TRONG KHO HÀNG</h1>
+        <p class="subtitle">SVTH: Lê Hữu Hoài - MSSV: 110124067 - Lớp: DA24TTC | GVHD: TS. Nguyễn Nhất Lam</p>
 
-    <h1>Mô phỏng hoạt động của Robot</h1>
+        <!-- Thanh công cụ & Chú thích trạng thái kho -->
+        <div class="control-panel">
+            <div class="legend">
+                <span class="legend-item"><span class="box empty"></span> Lối đi (0)</span>
+                <span class="legend-item"><span class="box rack"></span>📦 Kệ hàng (1)</span>
+                <span class="legend-item"><span class="box robot"></span>🤖Robot AGV (2)</span>
+                <span class="legend-item"><span class="box goal"></span>🎯 Điểm lấy hàng (3)</span>
+            </div>
 
-    <!-- Kết nối file JavaScript -->
+            <div class="actions">
+                <label>Chế độ click chuột: </label>
+                <select id="drawMode">
+                    <option value="1">📦 Vẽ / Xóa Kệ hàng</option>
+                    <option value="2">🤖 Đặt vị trí Robot</option>
+                    <option value="3">🎯 Đặt Điểm lấy hàng</option>
+                </select>
+                <button onclick="generateWarehouseLayout()"> Tạo mẫu kho hàng</button>
+                <button onclick="clearWarehouse()" class="btn-clear"> Làm mới kho</button>
+            </div>
+        </div>
+
+        <!-- Thông số tính toán thời gian thực -->
+        <div class="status-bar">
+            <span>📍 Vị trí Robot: <b id="robotPos">(1, 10)</b></span>
+            <span>🎯 Điểm lấy hàng: <b id="goalPos">(8, 10)</b></span>
+            <span>📏 Khoảng cách h(n): <b id="manhattanVal">7 bước</b></span>
+        </div>
+
+        <!-- Khu vực mặt sàn nhà kho 2D -->
+        <div class="warehouse-floor">
+            <div class="dock-label"> KHU VỰC CỬA XUẤT / NHẬP HÀNG </div>
+            <div id="warehouseGrid" class="grid-container"></div>
+        </div>
+    </div>
+
+    <!-- Liên kết file JavaScript nằm trong thư mục src -->
     <script src="src/gridNode.js"></script>
 </body>
 </html>
