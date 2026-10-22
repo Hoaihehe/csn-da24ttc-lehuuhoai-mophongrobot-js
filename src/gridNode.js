@@ -47,7 +47,7 @@ function calculateManhattanDistance(nodeA, nodeB) {
 }
 
 // --- CHẠY THỬ NGHIỆM KIỂM TRA MÔ HÌNH DỮ LIỆU (TEST TUẦN 1) ---
-const startNode = new GridNode(2, 3, CELL_STATE.ROBOT_START);
+const startNode = new GridNode(1, 10, CELL_STATE.ROBOT_START);
 const goalNode = new GridNode(8, 10, CELL_STATE.PICKING_GOAL);
 startNode.g = 0;
 startNode.h = calculateManhattanDistance(startNode, goalNode);
